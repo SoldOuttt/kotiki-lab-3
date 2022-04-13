@@ -19,7 +19,13 @@ public class CatService {
 	private final CatRepository catRepository;
 	private final CatOwnerRepository catOwnerRepository;
 
-	public void save(String name, Date dayOfBirth, String breed, String color, Long ownerId) {
+	public void save(
+			String name,
+			Date dayOfBirth,
+			String breed,
+			String color,
+			Long ownerId
+	) {
 		CatColor catColor;
 		try {
 			catColor = CatColor.valueOf(color.toUpperCase());
@@ -34,6 +40,44 @@ public class CatService {
 			return;
 		}
 		Cat cat = new Cat(name, dayOfBirth, breed, catColor, catOwner.get());
+		catRepository.save(cat);
+	}
+
+	public void deleteById(Long id) {
+		if (id == null) {
+			return;
+		}
+		try {
+			catRepository.deleteById(id);
+		} catch (Exception exception) {
+			System.out.println(exception.getStackTrace());
+			System.out.println(exception.getMessage());
+		}
+	}
+
+	public void update(
+			Long id,
+			String name,
+			Date dayOfBirth,
+			String breed,
+			String color,
+			Long ownerId
+	) {
+		CatColor catColor;
+		try {
+			catColor = CatColor.valueOf(color.toUpperCase());
+		} catch (IllegalArgumentException illegalArgumentException) {
+			return;
+		}
+		Optional<CatOwner> catOwner = catOwnerRepository.findById(ownerId);
+		if (name.isBlank()
+				|| dayOfBirth == null
+				|| breed.isBlank()
+				|| catOwner.isEmpty()
+				|| findById(id).isEmpty()) {
+			return;
+		}
+		Cat cat = new Cat(id, name, dayOfBirth, breed, catColor, catOwner.get());
 		catRepository.save(cat);
 	}
 

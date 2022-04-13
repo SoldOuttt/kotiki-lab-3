@@ -17,7 +17,7 @@
 <div>
     <form method="post" action="/cats/add">
         <label>
-            <input type="text" name="name" placeholder="enter name"/>
+            <input type="text" name="name" placeholder="enter name">
         </label>
         <label>
             <input type="date" name="dayOfBirth" placeholder="enter day of birth">
@@ -32,6 +32,41 @@
         <input type="number" name="ownerId" placeholder="enter owner id">
         </label>
         <button type="submit">add new cat</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/cats/delete">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <button type="submit">delete by id</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/cats/update">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <label>
+            <input type="text" name="name" placeholder="enter name">
+        </label>
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <label>
+            <input type="text" name="breed" placeholder="enter breed">
+        </label>
+        <label>
+            <input type="text" name="color" placeholder="enter color">
+        </label>
+        <label>
+            <input type="number" name="ownerId" placeholder="enter owner id">
+        </label>
+        <button type="submit">update cat</button>
     </form>
 </div>
 <br/>

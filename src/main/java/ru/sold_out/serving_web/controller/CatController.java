@@ -41,6 +41,30 @@ public class CatController {
 		return "cat/cats";
 	}
 
+	@PostMapping(value = "/delete")
+	public String delete(Map<String, Object> model,
+						 @RequestParam(required = false) Long id) {
+		catService.deleteById(id);
+		List<Cat> cats = catService.findAll();
+		model.put("cats", cats);
+		return "cat/cats";
+	}
+
+	@PostMapping(value = "/update")
+	public String update(Map<String, Object> model,
+						 @RequestParam(required = false) Long id,
+						 @RequestParam(required = false) String name,
+						 @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date dayOfBirth,
+						 @RequestParam(required = false) String breed,
+						 @RequestParam(required = false) String color,
+						 @RequestParam(required = false) Long ownerId
+	) {
+		catService.update(id, name, dayOfBirth, breed, color, ownerId);
+		List<Cat> cats = catService.findAll();
+		model.put("cats", cats);
+		return "cat/cats";
+	}
+
 	@PostMapping(value = "/filterById")
 	public String filterById(
 			Map<String, Object> model,
