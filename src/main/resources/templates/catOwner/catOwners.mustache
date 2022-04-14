@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>cat owners</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<a href="/"><b><i>&#9664; to main page</i></b></a>
+<br/>
+<br/>
+
+<a href="/cats"><b><i>&#9664; to cats page</i></b></a>
+<br/>
+<br/>
+
+<div>
+    <form method="post" action="/catOwners/add">
+        <label>
+            <input type="text" name="fullName" placeholder="enter full name"/>
+        </label>
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <button type="submit">add new cat owner</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/catOwners/delete">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <button type="submit">delete by id</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/catOwners/update">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <label>
+            <input type="text" name="fullName" placeholder="enter full name">
+        </label>
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <button type="submit">update cat owner</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/catOwners/filterById">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <button type="submit">filter by id</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/catOwners/filterByName">
+        <label>
+            <input type="text" name="fullName" placeholder="enter full name">
+        </label>
+        <button type="submit">filter by full name</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/catOwners/filterByDayOfBirth">
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <button type="submit">filter by day of birth</button>
+    </form>
+</div>
+<br>
+
+<div><i>Cat Owners</i></div>
+<br>
+<table>
+    <tr>
+        <th>id&emsp;</th>
+        <th>full name&emsp;</th>
+        <th>day of birth&emsp;</th>
+    </tr
+    {{#catOwners}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{fullName}}</td>
+            <td><i>{{dayOfBirth}}</i></td>
+        </tr>
+    {{/catOwners}}
+</table>
+</body>
+</html>

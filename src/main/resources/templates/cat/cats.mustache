@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>cat owners</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<a href="/"><b><i>&#9664; to main page</i></b></a>
+<br/>
+<br/>
+
+<a href="/catOwners"><b><i>&#9664; to cat owners page</i></b></a>
+<br/>
+<br/>
+
+<div>
+    <form method="post" action="/cats/add">
+        <label>
+            <input type="text" name="name" placeholder="enter name">
+        </label>
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <label>
+            <input type="text" name="breed" placeholder="enter breed">
+        </label>
+        <label>
+            <input type="text" name="color" placeholder="enter color">
+        </label>
+        <label>
+        <input type="number" name="ownerId" placeholder="enter owner id">
+        </label>
+        <button type="submit">add new cat</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/cats/delete">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <button type="submit">delete by id</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/cats/update">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <label>
+            <input type="text" name="name" placeholder="enter name">
+        </label>
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <label>
+            <input type="text" name="breed" placeholder="enter breed">
+        </label>
+        <label>
+            <input type="text" name="color" placeholder="enter color">
+        </label>
+        <label>
+            <input type="number" name="ownerId" placeholder="enter owner id">
+        </label>
+        <button type="submit">update cat</button>
+    </form>
+</div>
+<br/>
+
+<div>
+    <form method="post" action="/cats/filterById">
+        <label>
+            <input type="number" name="id" placeholder="enter id">
+        </label>
+        <button type="submit">filter by id</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/cats/filterByName">
+        <label>
+            <input type="text" name="name" placeholder="enter name">
+        </label>
+        <button type="submit">filter by name</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/cats/filterByDayOfBirth">
+        <label>
+            <input type="date" name="dayOfBirth" placeholder="enter day of birth">
+        </label>
+        <button type="submit">filter by day of birth</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/cats/filterByBreed">
+        <label>
+            <input type="text" name="breed" placeholder="enter breed">
+        </label>
+        <button type="submit">filter by breed</button>
+    </form>
+</div>
+<br>
+
+<div>
+    <form method="post" action="/cats/filterByColor">
+        <label>
+            <input type="text" name="color" placeholder="enter color">
+        </label>
+        <button type="submit">filter by color</button>
+    </form>
+</div>
+<br>
+
+
+<div>
+    <form method="post" action="/cats/filterByOwnerId">
+        <label>
+            <input type="number" name="ownerId" placeholder="enter owner id">
+        </label>
+        <button type="submit">filter by owner id</button>
+    </form>
+</div>
+<br>
+
+<div><i>Cats</i></div>
+<br>
+<table>
+    <tr>
+        <th>id&emsp;</th>
+        <th>name&emsp;</th>
+        <th>breed&emsp;</th>
+        <th>color&emsp;</th>
+        <th>owner id&emsp;</th>
+        <th>day of birth&emsp;</th>
+    </tr
+    {{#cats}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{breed}}</td>
+            <td style="text-transform: lowercase">{{color}}</td>
+            <td>&emsp;{{catOwner.id}}</td>
+            <td><i>{{dayOfBirth}}</i></td>
+        </tr>
+    {{/cats}}
+</table>
+</body>
+</html>
